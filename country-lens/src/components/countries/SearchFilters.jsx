@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Input from '../ui/Input';
 import Select from '../ui/Select';
 
-const SearchFilters = ({ onSearch, onRegionChange }) => {
+const SearchFilters = ({ onSearch, onRegionChange, onLanguageChange  }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchTimeout, setSearchTimeout] = useState(null);
 
@@ -13,6 +13,16 @@ const SearchFilters = ({ onSearch, onRegionChange }) => {
         { value: 'Asia', label: 'Asia' },
         { value: 'Europe', label: 'Europe' },
         { value: 'Oceania', label: 'Oceania' },
+    ];
+
+    const languages = [
+        { value: '', label: 'All Languages' },
+        { value: 'english', label: 'English' },
+        { value: 'french', label: 'French' },
+        { value: 'spanish', label: 'Spanish' },
+        { value: 'german', label: 'German' },
+        { value: 'chinese', label: 'Chinese' },
+        { value: 'arabic', label: 'Arabic' },
     ];
 
     // Handle search with debounce
@@ -58,6 +68,15 @@ const SearchFilters = ({ onSearch, onRegionChange }) => {
                     placeholder="Filter by Region"
                     fullWidth
                     aria-label="Filter by region"
+                />
+            </div>
+
+            <div className="w-full md:w-1/3">
+                <Select
+                    options={languages}
+                    onChange={(e) => onLanguageChange(e.target.value)}
+                    placeholder="Filter by Language"
+                    fullWidth
                 />
             </div>
         </div>

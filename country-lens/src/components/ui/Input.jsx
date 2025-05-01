@@ -12,7 +12,7 @@ const Input = forwardRef(({
 
     const inputId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
-    const baseInputClasses = 'block rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white';
+    const baseInputClasses = 'block rounded-md border-gray-300 shadow-light-shadow dark:shadow-dark-shadow focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white';
     const errorInputClasses = 'border-red-300 focus:border-red-500 focus:ring-red-500';
     const widthClass = fullWidth ? 'w-full' : '';
 

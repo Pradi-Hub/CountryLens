@@ -28,7 +28,9 @@ export default {
                 titleFont: ['Montserrat', 'sans-serif'],
             },
             boxShadow: {
-                shadowOne: '10px 10px 19px #1c1e22, -10px -10px 19px #262a2e',
+                //shadowOne: '10px 10px 19px #1c1e22, -10px -10px 19px #262a2e',
+                'light-shadow': '0px 4px 6px rgba(0, 0, 0, 0.1)', // Light shadow for white bg
+                'dark-shadow': '0px 4px 6px rgba(0, 0, 0, 0.3)', // Dark shadow for dark bg
             },
         },
     },

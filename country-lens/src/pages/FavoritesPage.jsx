@@ -29,7 +29,7 @@ const FavoritesPage = () => {
                 </h1>
 
                 {favorites.length === 0 ? (
-                    <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+                    <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-light-shadow dark:shadow-dark-shadow">
                         <p className="text-gray-700 dark:text-gray-300 mb-4">
                             You haven't added any countries to your favorites yet.
                         </p>
@@ -42,7 +42,7 @@ const FavoritesPage = () => {
                         {favorites.map(country => (
                             <div
                                 key={country.cca3}
-                                className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+                                className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-light-shadow dark:shadow-dark-shadow hover:shadow-lg transition-shadow"
                             >
                                 <Link to={`/country/${country.cca3}`}>
                                     <div className="h-40 overflow-hidden">
