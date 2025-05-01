@@ -1,8 +1,8 @@
 # 🌍 CountryLens
 
-CountryLens is a modern React application that lets you explore, search, and discover detailed information about countries around the world. Powered by the [REST Countries API](https://restcountries.com/), CountryLens offers an interactive experience to browse global data, filter by region or language, and optionally curate a personal list of favorite countries.
+![CountryLens Logo](https://raw.githubusercontent.com/Pradi-Hub/CountryLens/main/country-lens/src/assets/countryLens2.png)
 
-![CountryLens Logo](./CountryLens/country-lens/src/assets/countryLens2.png)
+CountryLens is a modern React application that lets you explore, search, and discover detailed information about countries around the world. Powered by the [REST Countries API](https://restcountries.com/), CountryLens offers an interactive experience to browse global data, filter by region or language, and optionally curate a personal list of favorite countries.
 
 ---
 
