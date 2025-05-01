@@ -7,7 +7,6 @@ import CountryDetailsPage from './pages/CountryDetailsPage';
 import LoginPage from './pages/LoginPage';
 import FavoritesPage from './pages/FavoritesPage';
 import NotFoundPage from './pages/NotFoundPage';
-import 'leaflet/dist/leaflet.css';
 
 const App = () => {
     return (
