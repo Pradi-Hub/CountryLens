@@ -7,7 +7,11 @@ export const getAllCountries = async () => {
         if (!response.ok) {
             throw new Error('Failed to fetch countries');
         }
-        return await response.json();
+        const data = await response.json();
+        // Filter to only countries where name *starts with* the search term (case-insensitive)
+        return data.filter(country =>
+            country.name.common.toLowerCase().startsWith(name.toLowerCase())
+        );
     } catch (error) {
         console.error('Error fetching all countries:', error);
         throw error;
@@ -44,7 +48,11 @@ export const getCountriesByRegion = async (region) => {
         if (!response.ok) {
             throw new Error('Failed to fetch countries by region');
         }
-        return await response.json();
+        const data = await response.json();
+        // Filter to only countries where name *starts with* the search term (case-insensitive)
+        return data.filter(country =>
+            country.name.common.toLowerCase().startsWith(name.toLowerCase())
+        );
     } catch (error) {
         console.error('Error fetching countries by region:', error);
         throw error;
@@ -61,6 +69,22 @@ export const getCountryByCode = async (code) => {
         return await response.json();
     } catch (error) {
         console.error('Error fetching country by code:', error);
+        throw error;
+    }
+};
+
+// Get countries by language
+export const getCountriesByLanguage = async (language) => {
+    try {
+        const response = await fetch(`${BASE_URL}/lang/${language}`);
+        console.log(response)
+        if (!response.ok) {
+            if (response.status === 404) return [];
+            throw new Error('Failed to fetch countries by language');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching countries by language:', error);
         throw error;
     }
 };

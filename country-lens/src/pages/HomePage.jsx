@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Layout from '../components/layout/Layout';
 import SearchFilters from '../components/countries/SearchFilters';
 import CountryList from '../components/countries/CountryList';
-import { getAllCountries, searchCountriesByName, getCountriesByRegion } from '../services/countryService';
+import { getAllCountries, getCountriesByRegion, getCountriesByLanguage } from '../services/countryService';
+import ScrollToTopButton from "../components/ui/ScrollToTopButton.jsx";
 
 const HomePage = () => {
     const [countries, setCountries] = useState([]);
@@ -11,6 +12,7 @@ const HomePage = () => {
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [region, setRegion] = useState('');
+    const [language, setLanguage] = useState('');
 
     // Fetch all countries on initial load
     useEffect(() => {
@@ -32,78 +34,54 @@ const HomePage = () => {
         fetchCountries();
     }, []);
 
-    // Handle search by name
-    const handleSearch = useCallback(async (term) => {
+    // 🔁 Define this FIRST so it can be used in other callbacks
+    const applyAllFilters = useCallback(async (region, language, searchTerm) => {
+        try {
+            setLoading(true);
+            let results = [];
+
+            if (region && language) {
+                const langResults = await getCountriesByLanguage(language);
+                results = langResults.filter(c => c.region === region);
+            } else if (region) {
+                results = await getCountriesByRegion(region);
+            } else if (language) {
+                results = await getCountriesByLanguage(language);
+            } else {
+                results = countries;
+            }
+
+            if (searchTerm) {
+                results = results.filter(c =>
+                    c.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+            }
+
+            setFilteredCountries(results);
+            setError(null);
+        } catch (err) {
+            console.error(err);
+            setError('Failed to apply filters.');
+        } finally {
+            setLoading(false);
+        }
+    }, [countries]);
+
+    // ✅ Callbacks AFTER applyAllFilters
+    const handleSearch = useCallback((term) => {
         setSearchTerm(term);
+        applyAllFilters(region, language, term);
+    }, [region, language, applyAllFilters]);
 
-        try {
-            setLoading(true);
-            let results;
-
-            // If search term is empty, reset to all countries or filtered by region
-            if (!term) {
-                if (region) {
-                    results = await getCountriesByRegion(region);
-                } else {
-                    results = countries;
-                }
-            } else {
-                // Search by name
-                results = await searchCountriesByName(term);
-
-                // Also filter by region if one is selected
-                if (region) {
-                    results = results.filter(country => country.region === region);
-                }
-            }
-
-            setFilteredCountries(results);
-            setError(null);
-        } catch (err) {
-            setError('Failed to search countries. Please try again.');
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
-    }, [countries, region]);
-
-    // Handle region filter change
-    const handleRegionChange = useCallback(async (selectedRegion) => {
+    const handleRegionChange = useCallback((selectedRegion) => {
         setRegion(selectedRegion);
+        applyAllFilters(selectedRegion, language, searchTerm);
+    }, [language, searchTerm, applyAllFilters]);
 
-        try {
-            setLoading(true);
-            let results;
-
-            // If no region selected, show all countries or search results
-            if (!selectedRegion) {
-                if (searchTerm) {
-                    results = await searchCountriesByName(searchTerm);
-                } else {
-                    results = countries;
-                }
-            } else {
-                // Get countries by region
-                results = await getCountriesByRegion(selectedRegion);
-
-                // Also filter by search term if one exists
-                if (searchTerm) {
-                    const searchResults = await searchCountriesByName(searchTerm);
-                    results = results.filter(country =>
-                        searchResults.some(c => c.cca3 === country.cca3)
-                    );
-                }
-            }
-
-            setFilteredCountries(results);
-            setError(null);
-        } catch (err) {
-            setError('Failed to filter countries. Please try again.');
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
-    }, [countries, searchTerm]);
+    const handleLanguageChange = useCallback((selectedLanguage) => {
+        setLanguage(selectedLanguage);
+        applyAllFilters(region, selectedLanguage, searchTerm);
+    }, [region, searchTerm, applyAllFilters]);
 
     return (
         <Layout>
@@ -115,6 +93,7 @@ const HomePage = () => {
                 <SearchFilters
                     onSearch={handleSearch}
                     onRegionChange={handleRegionChange}
+                    onLanguageChange={handleLanguageChange}
                 />
 
                 <CountryList
@@ -123,6 +102,7 @@ const HomePage = () => {
                     error={error}
                 />
             </div>
+            <ScrollToTopButton />
         </Layout>
     );
 };
