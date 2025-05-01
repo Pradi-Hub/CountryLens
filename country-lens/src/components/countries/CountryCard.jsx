@@ -26,7 +26,7 @@ const CountryCard = ({ country }) => {
     return (
         <Link
             to={`/country/${country.cca3}`}
-            className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-light-shadow dark:shadow-dark-shadow hover:shadow-lg transform transition-all duration-300 hover:scale-105 cursor-pointer"
         >
             <div className="h-40 overflow-hidden">
                 <img
@@ -45,7 +45,7 @@ const CountryCard = ({ country }) => {
                     {user && (
                         <button
                             onClick={handleFavoriteToggle}
-                            className="text-gray-400 hover:text-yellow-500 dark:text-gray-500 dark:hover:text-yellow-400"
+                            className="text-gray-400 hover:text-yellow-500 dark:text-gray-500 dark:hover:text-yellow-400 transition-colors duration-300"
                             aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
                         >
                             {isFavorite ? (

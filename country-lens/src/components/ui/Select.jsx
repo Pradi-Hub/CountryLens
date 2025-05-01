@@ -15,7 +15,7 @@ const Select = forwardRef(({
 
     const selectId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
-    const baseClasses = 'block rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white';
+    const baseClasses = 'block rounded-md border-gray-300 shadow-light-shadow dark:shadow-dark-shadow focus:border-blue-500 focus:ring-blue-500 sm:text-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white';
     const errorClasses = 'border-red-300 focus:border-red-500 focus:ring-red-500';
     const widthClass = fullWidth ? 'w-full' : '';
 

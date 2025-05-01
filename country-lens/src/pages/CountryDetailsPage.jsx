@@ -93,13 +93,13 @@ const CountryDetailsPage = () => {
                     </Link>
                 </div>
 
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-light-shadow dark:shadow-dark-shadow overflow-hidden">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
                         <div className="w-full h-auto aspect-video">
                             <img
                                 src={country.flags.svg}
                                 alt={`Flag of ${country.name.common}`}
-                                className="w-full h-full object-cover rounded-lg shadow"
+                                className="w-full h-full object-cover rounded-lg shadow-light-shadow dark:shadow-dark-shadow"
                             />
                         </div>
 
@@ -169,7 +169,7 @@ const CountryDetailsPage = () => {
                                             <Link
                                                 key={border}
                                                 to={`/country/${border}`}
-                                                className="px-4 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-md shadow-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                                                className="px-4 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-300 rounded-md shadow-light-shadow dark:shadow-dark-shadow hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
                                             >
                                                 {border}
                                             </Link>

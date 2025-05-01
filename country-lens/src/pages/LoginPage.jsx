@@ -36,7 +36,7 @@ const LoginPage = () => {
     return (
         <Layout>
             <div className="max-w-md mx-auto">
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-light-shadow dark:shadow-dark-shadow p-8">
                     <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                         Login to Your Account
                     </h1>
