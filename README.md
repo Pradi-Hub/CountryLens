@@ -91,9 +91,7 @@ Using the [REST Countries API](https://restcountries.com/), the app interacts wi
 
 ## 📦 Deployment
 
-You can deploy this app for free using:
-
-- [Netlify](https://www.netlify.com/)
+Deployed this app using:
 - [Vercel](https://vercel.com/)
 
 ---
