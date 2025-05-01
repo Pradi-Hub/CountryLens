@@ -2,13 +2,16 @@
 
 CountryLens is a modern React application that lets you explore, search, and discover detailed information about countries around the world. Powered by the [REST Countries API](https://restcountries.com/), CountryLens offers an interactive experience to browse global data, filter by region or language, and optionally curate a personal list of favorite countries.
 
+![CountryLens Logo](./src/assets/logo.png)
+
 ---
 
 ## 🚀 Features
 
-- 🔍 **Search** for countries by name
+- 🔍 **Search** for countries by name (frontend-based filtering)
 - 🌐 **Filter** countries by region or language
 - 🗺️ **View details**: flag, capital, population, region, and languages
+- 🗺️ **Interactive map** using Leaflet
 - 💖 Add to **favorites list** after login **(CountryLens Pro)** 
 - 📱 Responsive design using Tailwind CSS
 - ⚡ Fast performance powered by Vite
@@ -17,11 +20,13 @@ CountryLens is a modern React application that lets you explore, search, and dis
 
 ## 🛠️ Tech Stack
 
+
 - **Frontend**: React (Functional Components)
 - **Styling**: Tailwind CSS
 - **API**: [REST Countries API](https://restcountries.com/)
 - **State Management**: React Hooks (useState, useEffect)
 - **Routing**: React Router DOM
+- **Maps**: [React-Leaflet](https://react-leaflet.js.org/)
 - **Version Control**: Git + GitHub
 - **Deployment**: Netlify / Vercel (free hosting)
 - **Optional**: Firebase Auth or custom backend for user login
@@ -53,33 +58,23 @@ Visit `http://localhost:5173` in your browser.
 
 ---
 
-## 📁 Project Structure
-
-```
-countrylens/
-├── public/
-├── src/
-│   ├── components/         # Reusable components (SearchBar, CountryCard, etc.)
-│   ├── pages/              # Page components (Home, CountryDetail, etc.)
-│   ├── services/           # API service functions
-│   ├── App.jsx             # Main app component
-│   ├── main.jsx            # Entry point
-│   └── styles/             # Tailwind or global styles
-├── tailwind.config.js
-├── vite.config.js
-└── README.md
-```
-
----
-
 ## 🌐 API Usage
 
 Using the [REST Countries API](https://restcountries.com/), the app interacts with the following endpoints:
 
 - `GET /all` – Get a list of all countries
-- `GET /name/{name}` – Search country by name
+- `GET /lang/{language}` – Filter countries by language
 - `GET /region/{region}` – Filter countries by region
 - `GET /alpha/{code}` – Get detailed info by country code
+
+---
+
+## 🗺️ Map Integration
+
+- Integrated interactive maps using react-leaflet
+- Displays markers at country coordinates
+- Popup shows country name and capital
+- Smooth scroll and proper stacking context (z-index fix applied)
 
 ---
 
