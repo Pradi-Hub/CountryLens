@@ -1,22 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import {Link, useNavigate} from 'react-router-dom';
+// import { useAuth } from '../hooks/useAuth';
 import europe from '../assets/europe.jpg';
 import asia from '../assets/asia.jpeg';
 import africa from '../assets/africa.jpeg';
 import america from '../assets/america.jpg';
 import oceania from '../assets/Oceania.jpg';
 import { Sun, Moon } from 'lucide-react';
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 
 const WelcomePage = () => {
-    const { user } = useAuth();
+    // const { user } = useAuth();
+    const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+
     const [darkMode, setDarkMode] = useState(() => {
         // Check local storage for theme preference
         const savedTheme = localStorage.getItem('theme');
         return savedTheme === 'dark' ||
             (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
     });
+
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+            setUser(firebaseUser);
+        });
+        return () => unsubscribe();
+    }, []);
 
     // Toggle dark mode
     const toggleDarkMode = () => {

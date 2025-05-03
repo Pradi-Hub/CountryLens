@@ -1,14 +1,35 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import { useTheme } from '../../hooks/useTheme';
 import { useAuth } from '../../hooks/useAuth';
 import { Sun, Moon } from 'lucide-react';
 import Button from '../ui/Button';
 import logo from '../../assets/countryLens2.png';
+import {getAuth, onAuthStateChanged, signOut} from "firebase/auth";
 
 const Header = () => {
     const { theme, toggleTheme } = useTheme();
-    const { user, logout } = useAuth();
+    // const { user, logout } = useAuth();
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+
+    const logout = async () => {
+        try {
+            await signOut(getAuth());
+            setUser(null);
+            navigate( "/login");
+        } catch (err) {
+            console.error(err.message);
+        }
+    };
+
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+            setUser(firebaseUser);
+        });
+        return () => unsubscribe();
+    }, []);
 
     return (
         <header

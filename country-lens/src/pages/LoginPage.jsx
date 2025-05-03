@@ -4,6 +4,7 @@ import Layout from '../components/layout/Layout';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import { useAuth } from '../hooks/useAuth';
+import OAuth from "./OAuth.jsx";
 
 const LoginPage = () => {
     const [activeTab, setActiveTab] = useState('login'); // 'login' or 'signup'
@@ -101,7 +102,8 @@ const LoginPage = () => {
                     {activeTab === 'login' && (
                         <form onSubmit={handleLoginSubmit} className="space-y-4">
                             {(formError || error) && (
-                                <div className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 p-3 rounded-md text-sm">
+                                <div
+                                    className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 p-3 rounded-md text-sm">
                                     {formError || error}
                                 </div>
                             )}
@@ -147,6 +149,11 @@ const LoginPage = () => {
                                     Forgot password?
                                 </button>
                             </div>
+                            <div
+                                className="flex items-center before:border-t before:flex-1 before:border-gray-300  after:border-t after:flex-1 after:border-gray-300">
+                                <p className="text-center font-semibold mx-4 dark:text-lime-600">OR</p>
+                            </div>
+                            <OAuth/>
                         </form>
                     )}
 
@@ -154,7 +161,8 @@ const LoginPage = () => {
                     {activeTab === 'signup' && (
                         <form onSubmit={handleSignupSubmit} className="space-y-4">
                             {(formError || error) && (
-                                <div className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 p-3 rounded-md text-sm">
+                                <div
+                                    className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 p-3 rounded-md text-sm">
                                     {formError || error}
                                 </div>
                             )}
@@ -215,13 +223,18 @@ const LoginPage = () => {
                             >
                                 {loading ? 'Creating Account...' : 'Sign Up'}
                             </Button>
+                            <div
+                                className="flex items-center before:border-t before:flex-1 before:border-gray-300  after:border-t after:flex-1 after:border-gray-300">
+                                <p className="text-center font-semibold mx-4 dark:text-lime-600">OR</p>
+                            </div>
+                            <OAuth />
                         </form>
                     )}
 
                     <div className="mt-6 text-center">
                         {activeTab === 'login' && (
                             <p className="text-sm text-[#547792] dark:text-[#94B4C1]">
-                                Demo credentials: user@example.com / password
+                            Demo credentials: user@example.com / password
                             </p>
                         )}
                         {activeTab === 'signup' && (
