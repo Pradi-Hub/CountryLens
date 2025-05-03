@@ -1,12 +1,29 @@
-import { useContext } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import { useState, useEffect } from 'react';
 
 export const useTheme = () => {
-    const context = useContext(ThemeContext);
+    const [theme, setTheme] = useState(() => {
+        // Check local storage for theme preference
+        const savedTheme = localStorage.getItem('theme');
+        return savedTheme ||
+            (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    });
 
-    if (context === undefined) {
-        throw new Error('useTheme must be used within a ThemeProvider');
-    }
+    const toggleTheme = () => {
+        setTheme(prevTheme => {
+            const newTheme = prevTheme === 'light' ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+            return newTheme;
+        });
+    };
 
-    return context;
+    // Apply theme class to document
+    useEffect(() => {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [theme]);
+
+    return { theme, toggleTheme };
 };

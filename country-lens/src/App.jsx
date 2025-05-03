@@ -8,6 +8,7 @@ import CountryDetailsPage from './pages/CountryDetailsPage';
 import LoginPage from './pages/LoginPage';
 import FavoritesPage from './pages/FavoritesPage';
 import NotFoundPage from './pages/NotFoundPage';
+import WelcomePage from "./pages/WelcomePage.jsx";
 
 const App = () => {
     return (
@@ -15,11 +16,12 @@ const App = () => {
             <AuthProvider>
                 <Router>
                     <Routes>
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="/home" element={<HomePage />} />
                         <Route path="/country/:code" element={<CountryDetailsPage />} />
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/favorites" element={<FavoritesPage />} />
                         <Route path="*" element={<NotFoundPage />} />
+                        <Route path="/" element={<WelcomePage />} />
                     </Routes>
                 </Router>
             </AuthProvider>

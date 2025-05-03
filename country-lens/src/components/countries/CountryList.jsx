@@ -5,7 +5,7 @@ const CountryList = ({ countries, loading, error }) => {
     if (loading) {
         return (
             <div className="flex justify-center items-center min-h-[300px]">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 dark:border-blue-500"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#547792] dark:border-[#94B4C1]"></div>
             </div>
         );
     }
@@ -15,7 +15,7 @@ const CountryList = ({ countries, loading, error }) => {
             <div className="text-center py-12">
                 <p className="text-red-600 dark:text-red-400">Error: {error}</p>
                 <button
-                    className="mt-2 text-blue-600 dark:text-blue-400 hover:underline"
+                    className="mt-2 text-[#547792] dark:text-[#94B4C1] hover:underline"
                     onClick={() => window.location.reload()}
                 >
                     Try again
@@ -27,7 +27,7 @@ const CountryList = ({ countries, loading, error }) => {
     if (!countries || countries.length === 0) {
         return (
             <div className="text-center py-12">
-                <p className="text-gray-700 dark:text-gray-300">No countries found. Try adjusting your search.</p>
+                <p className="text-[#213448] dark:text-[#ECEFCA]">No countries found. Try adjusting your search.</p>
             </div>
         );
     }

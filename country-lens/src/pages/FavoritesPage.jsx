@@ -23,39 +23,40 @@ const FavoritesPage = () => {
 
     return (
         <Layout>
-            <div className="max-w-7xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center sm:text-left">
                     Favorite Countries
                 </h1>
 
                 {favorites.length === 0 ? (
-                    <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-lg shadow-light-shadow dark:shadow-dark-shadow">
-                        <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    <div className="text-center py-8 sm:py-12 bg-[#ECEFCA]/20 dark:bg-[#213448] rounded-lg shadow-light-shadow dark:shadow-dark-shadow mx-4 sm:mx-0">
+                        <p className="text-[#213448] dark:text-[#ECEFCA] mb-4 px-4">
                             You haven't added any countries to your favorites yet.
                         </p>
-                        <Link to="/">
+                        <Link to="/home">
                             <Button variant="primary">Explore Countries</Button>
                         </Link>
                     </div>
                 ) : (
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                         {favorites.map(country => (
                             <div
                                 key={country.cca3}
-                                className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-light-shadow dark:shadow-dark-shadow hover:shadow-lg transition-shadow"
+                                className="bg-[#ECEFCA]/20 dark:bg-[#213448] rounded-lg overflow-hidden shadow-light-shadow dark:shadow-dark-shadow hover:shadow-lg transition-shadow"
                             >
-                                <Link to={`/country/${country.cca3}`}>
-                                    <div className="h-40 overflow-hidden">
+                                <Link to={`/country/${country.cca3}`} className="block h-full">
+                                    <div className="h-32 sm:h-40 overflow-hidden">
                                         <img
                                             src={country.flag}
                                             alt={`Flag of ${country.name}`}
                                             className="w-full h-full object-cover"
+                                            loading="lazy"
                                         />
                                     </div>
 
-                                    <div className="p-4">
+                                    <div className="p-3 sm:p-4">
                                         <div className="flex justify-between items-start">
-                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                                            <h3 className="text-base sm:text-lg font-semibold text-[#213448] dark:text-[#ECEFCA] truncate flex-1 pr-2">
                                                 {country.name}
                                             </h3>
 
@@ -65,7 +66,7 @@ const FavoritesPage = () => {
                                                     e.stopPropagation();
                                                     removeFavorite(country.cca3);
                                                 }}
-                                                className="text-gray-400 hover:text-red-500 dark:text-gray-500 dark:hover:text-red-400"
+                                                className="text-[#547792] hover:text-red-500 dark:text-[#94B4C1] dark:hover:text-red-400 flex-shrink-0"
                                                 aria-label="Remove from favorites"
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

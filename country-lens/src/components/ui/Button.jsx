@@ -14,10 +14,10 @@ const Button = ({
     const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
 
     const variants = {
-        primary: 'bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-800',
-        secondary: 'bg-gray-200 text-gray-900 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600',
-        outline: 'border border-gray-300 bg-transparent hover:bg-gray-100 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800',
-        ghost: 'bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-100'
+        primary: 'bg-[#547792] text-[#ECEFCA] hover:bg-[#213448] dark:bg-[#547792] dark:hover:bg-[#213448]',
+        secondary: 'bg-[#94B4C1] text-[#213448] hover:bg-[#547792] dark:bg-[#213448] dark:text-[#ECEFCA] dark:hover:bg-[#547792]',
+        outline: 'border border-[#94B4C1] bg-transparent text-[#213448] hover:bg-[#ECEFCA] dark:border-[#547792] dark:text-[#ECEFCA] dark:hover:bg-[#213448]',
+        ghost: 'bg-transparent text-[#213448] hover:bg-[#ECEFCA] dark:text-[#ECEFCA] dark:hover:bg-[#213448]'
     };
 
     const sizes = {
