@@ -4,6 +4,7 @@ import { useTheme } from '../../hooks/useTheme';
 import { useAuth } from '../../hooks/useAuth';
 import { Sun, Moon } from 'lucide-react';
 import Button from '../ui/Button';
+import logo from '../../assets/countryLens2.png';
 
 const Header = () => {
     const { theme, toggleTheme } = useTheme();
@@ -16,7 +17,7 @@ const Header = () => {
                 {/* Logo and Brand Name */}
                 <Link to="/" className="flex items-center space-x-1 sm:space-x-2 group">
                     <img
-                        src="/src/assets/countryLens2.png"
+                        src={logo}
                         alt="CountryLens Logo"
                         className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-24 lg:w-24 transition-all duration-300 group-hover:drop-shadow-lg drop-shadow-md"
                     />
