@@ -32,26 +32,26 @@ const CountryCard = ({ country }) => {
 
     return (
         <>
-        <Link
-            to={`/country/${country.cca3}`}
-            className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-light-shadow dark:shadow-dark-shadow hover:shadow-lg transform transition-all duration-300 hover:scale-105 cursor-pointer"
-        >
-            <div className="h-40 overflow-hidden">
-                <img
-                    src={country.flags.svg}
-                    alt={`Flag of ${country.name.common}`}
-                    className="w-full h-full object-cover"
-                />
-            </div>
+            <Link
+                to={`/country/${country.cca3}`}
+                className="bg-[#ECEFCA]/20 dark:bg-[#213448] rounded-lg overflow-hidden shadow-light-shadow dark:shadow-dark-shadow hover:shadow-lg transform transition-all duration-300 hover:scale-105 cursor-pointer"
+            >
+                <div className="h-40 overflow-hidden">
+                    <img
+                        src={country.flags.svg}
+                        alt={`Flag of ${country.name.common}`}
+                        className="w-full h-full object-cover"
+                    />
+                </div>
 
-            <div className="p-4">
-                <div className="flex justify-between items-start">
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                        {country.name.common}
-                    </h3>
+                <div className="p-4">
+                    <div className="flex justify-between items-start">
+                        <h3 className="text-lg font-semibold text-[#213448] dark:text-[#ECEFCA]">
+                            {country.name.common}
+                        </h3>
                         <button
                             onClick={handleFavoriteToggle}
-                            className="text-gray-400 hover:text-yellow-500 dark:text-gray-500 dark:hover:text-yellow-400 transition-colors duration-300"
+                            className="text-[#547792] hover:text-yellow-500 dark:text-[#94B4C1] dark:hover:text-yellow-400 transition-colors duration-300"
                             aria-label={
                                 user
                                     ? isFavorite
@@ -70,15 +70,15 @@ const CountryCard = ({ country }) => {
                                 </svg>
                             )}
                         </button>
-                </div>
+                    </div>
 
-                <div className="mt-3 space-y-1 text-sm text-gray-700 dark:text-gray-300">
-                    <p><span className="font-medium">Capital:</span> {country.capital?.[0] || 'N/A'}</p>
-                    <p><span className="font-medium">Region:</span> {country.region}</p>
-                    <p><span className="font-medium">Population:</span> {formattedPopulation}</p>
+                    <div className="mt-3 space-y-1 text-sm text-[#547792] dark:text-[#94B4C1]">
+                        <p><span className="font-medium">Capital:</span> {country.capital?.[0] || 'N/A'}</p>
+                        <p><span className="font-medium">Region:</span> {country.region}</p>
+                        <p><span className="font-medium">Population:</span> {formattedPopulation}</p>
+                    </div>
                 </div>
-            </div>
-        </Link>
+            </Link>
             {showLoginModal && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300 ease-out animate-fadeIn">
                     <LoginPromptModal onClose={() => setShowLoginModal(false)} />

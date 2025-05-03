@@ -1,18 +1,17 @@
 import React from 'react';
 
 const Footer = () => {
-
     return (
-        <footer className="bg-gray-900 text-gray-400 py-12">
+        <footer className="bg-[#213448] text-[#94B4C1] py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-6 md:mb-0">
-                        <h2 className="text-2xl font-bold text-white">CountryLens</h2>
+                        <h2 className="text-2xl font-bold text-[#ECEFCA]">CountryLens</h2>
                         <p className="mt-2">Explore the world, one country at a time.</p>
                     </div>
 
                     <div className="flex space-x-6">
-                        <a href="#" className="text-gray-400 hover:text-white">
+                        <a href="#" className="text-[#94B4C1] hover:text-[#ECEFCA]">
                             <span className="sr-only">Facebook</span>
                             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path fillRule="evenodd"
@@ -21,7 +20,7 @@ const Footer = () => {
                             </svg>
                         </a>
 
-                        <a href="#" className="text-gray-400 hover:text-white">
+                        <a href="#" className="text-[#94B4C1] hover:text-[#ECEFCA]">
                             <span className="sr-only">Twitter</span>
                             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path
@@ -29,7 +28,7 @@ const Footer = () => {
                             </svg>
                         </a>
 
-                        <a href="#" className="text-gray-400 hover:text-white">
+                        <a href="#" className="text-[#94B4C1] hover:text-[#ECEFCA]">
                             <span className="sr-only">GitHub</span>
                             <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path fillRule="evenodd"
@@ -40,11 +39,11 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className="mt-8 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between">
+                <div className="mt-8 border-t border-[#547792] pt-8 flex flex-col md:flex-row justify-between">
                     <div className="flex flex-col md:flex-row md:space-x-6">
-                        <a href="#" className="text-gray-400 hover:text-white mb-2 md:mb-0">Privacy Policy</a>
-                        <a href="#" className="text-gray-400 hover:text-white mb-2 md:mb-0">Terms of Service</a>
-                        <a href="#" className="text-gray-400 hover:text-white">Contact</a>
+                        <a href="#" className="text-[#94B4C1] hover:text-[#ECEFCA] mb-2 md:mb-0">Privacy Policy</a>
+                        <a href="#" className="text-[#94B4C1] hover:text-[#ECEFCA] mb-2 md:mb-0">Terms of Service</a>
+                        <a href="#" className="text-[#94B4C1] hover:text-[#ECEFCA]">Contact</a>
                     </div>
 
                     <p className="mt-4 md:mt-0">© {new Date().getFullYear()} CountryLens. All rights reserved.</p>
