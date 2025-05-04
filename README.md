@@ -118,7 +118,7 @@ All API calls are managed in `/src/services/countryService.js`:
 
 Deployed using:
 
-- **Vercel**: [https://countrylens.vercel.app](https://countrylens.vercel.app)
+- **Vercel**: [https://country-lens-ochre.vercel.app](https://country-lens-ochre.vercel.app)
 
 ---
 
