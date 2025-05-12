@@ -1,7 +1,23 @@
+// src/services/countryService.js
+
 const BASE_URL = 'https://restcountries.com/v3.1';
 
 // Get all countries
 export const getAllCountries = async () => {
+    try {
+        const response = await fetch(`${BASE_URL}/all`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch countries');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching all countries:', error);
+        throw error;
+    }
+};
+
+// Get countries by name
+export const getCountriesByName = async (name) => {
     try {
         const response = await fetch(`${BASE_URL}/all`);
         if (!response.ok) {
@@ -13,30 +29,7 @@ export const getAllCountries = async () => {
             country.name.common.toLowerCase().startsWith(name.toLowerCase())
         );
     } catch (error) {
-        console.error('Error fetching all countries:', error);
-        throw error;
-    }
-};
-
-// Search countries by name
-export const searchCountriesByName = async (name) => {
-    try {
-        const response = await fetch(`${BASE_URL}/name/${name}`);
-        if (!response.ok) {
-            // Return empty array if country not found (404 error)
-            if (response.status === 404) {
-                return [];
-            }
-            throw new Error('Failed to search countries');
-        }
-        const data = await response.json();
-
-        // Filter to only countries where name *starts with* the search term (case-insensitive)
-        return data.filter(country =>
-            country.name.common.toLowerCase().startsWith(name.toLowerCase())
-        );
-    } catch (error) {
-        console.error('Error searching countries by name:', error);
+        console.error('Error fetching countries by name:', error);
         throw error;
     }
 };
@@ -48,11 +41,7 @@ export const getCountriesByRegion = async (region) => {
         if (!response.ok) {
             throw new Error('Failed to fetch countries by region');
         }
-        const data = await response.json();
-        // Filter to only countries where name *starts with* the search term (case-insensitive)
-        return data.filter(country =>
-            country.name.common.toLowerCase().startsWith(name.toLowerCase())
-        );
+        return await response.json();
     } catch (error) {
         console.error('Error fetching countries by region:', error);
         throw error;
@@ -77,7 +66,6 @@ export const getCountryByCode = async (code) => {
 export const getCountriesByLanguage = async (language) => {
     try {
         const response = await fetch(`${BASE_URL}/lang/${language}`);
-        console.log(response)
         if (!response.ok) {
             if (response.status === 404) return [];
             throw new Error('Failed to fetch countries by language');
