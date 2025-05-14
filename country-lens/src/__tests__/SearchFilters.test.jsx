@@ -14,7 +14,14 @@ describe("SearchFilters", () => {
     expect(
       screen.getByPlaceholderText("Search for a country...")
     ).toBeInTheDocument();
-    expect(screen.getAllByRole("combobox").length).toBe(2);
+
+    // Check only for the select elements (comboboxes) for language filtering
+    const selects = screen.getAllByRole("combobox");
+    expect(selects.length).toBe(1); // There should be only 1 combobox for language
+
+    // Check that the region buttons are rendered (using 'button' role)
+    const regionButtons = screen.getAllByRole("button");
+    expect(regionButtons.length).toBe(6); // 6 region buttons (All Regions + 5 actual regions)
   });
 
   it("calls onSearch when typing", () => {
