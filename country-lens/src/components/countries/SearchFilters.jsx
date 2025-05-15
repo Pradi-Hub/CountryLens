@@ -18,6 +18,20 @@ const SearchFilters = ({ onSearch, onRegionChange, onLanguageChange }) => {
     { value: "german", label: "German" },
     { value: "chinese", label: "Chinese" },
     { value: "arabic", label: "Arabic" },
+    { value: "russian", label: "Russian" },
+    { value: "portuguese", label: "Portuguese" },
+    { value: "hindi", label: "Hindi" },
+    { value: "bengali", label: "Bengali" },
+    { value: "japanese", label: "Japanese" },
+    { value: "korean", label: "Korean" },
+    { value: "italian", label: "Italian" },
+    { value: "urdu", label: "Urdu" },
+    { value: "turkish", label: "Turkish" },
+    { value: "persian", label: "Persian" },
+    { value: "swahili", label: "Swahili" },
+    { value: "dutch", label: "Dutch" },
+    { value: "tamil", label: "Tamil" },
+    { value: "malay", label: "Malay" },
   ];
 
   useEffect(() => {
