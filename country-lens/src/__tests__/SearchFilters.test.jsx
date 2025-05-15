@@ -14,7 +14,12 @@ describe("SearchFilters", () => {
     expect(
       screen.getByPlaceholderText("Search for a country...")
     ).toBeInTheDocument();
-    expect(screen.getAllByRole("combobox").length).toBe(2);
+
+    const selects = screen.getAllByRole("combobox");
+    expect(selects.length).toBe(1);
+
+    const regionButtons = screen.getAllByRole("button");
+    expect(regionButtons.length).toBe(6);
   });
 
   it("calls onSearch when typing", () => {
@@ -28,8 +33,7 @@ describe("SearchFilters", () => {
     );
     const input = screen.getByPlaceholderText("Search for a country...");
     fireEvent.change(input, { target: { value: "France" } });
-    // Debounce: fast-forward time
+
     jest.advanceTimersByTime(500);
-    // Not guaranteed to be called immediately due to debounce, so skip assertion here
   });
 });
