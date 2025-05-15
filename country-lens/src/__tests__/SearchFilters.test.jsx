@@ -15,13 +15,11 @@ describe("SearchFilters", () => {
       screen.getByPlaceholderText("Search for a country...")
     ).toBeInTheDocument();
 
-    // Check only for the select elements (comboboxes) for language filtering
     const selects = screen.getAllByRole("combobox");
-    expect(selects.length).toBe(1); // There should be only 1 combobox for language
+    expect(selects.length).toBe(1);
 
-    // Check that the region buttons are rendered (using 'button' role)
     const regionButtons = screen.getAllByRole("button");
-    expect(regionButtons.length).toBe(6); // 6 region buttons (All Regions + 5 actual regions)
+    expect(regionButtons.length).toBe(6);
   });
 
   it("calls onSearch when typing", () => {
@@ -35,8 +33,7 @@ describe("SearchFilters", () => {
     );
     const input = screen.getByPlaceholderText("Search for a country...");
     fireEvent.change(input, { target: { value: "France" } });
-    // Debounce: fast-forward time
+
     jest.advanceTimersByTime(500);
-    // Not guaranteed to be called immediately due to debounce, so skip assertion here
   });
 });

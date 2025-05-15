@@ -9,7 +9,6 @@ import {
 import HomePage from "../pages/HomePage";
 import * as countryService from "../services/countryService";
 
-// ✅ Mock useLocation, useNavigate, Link from react-router-dom
 jest.mock("react-router-dom", () => ({
   Link: ({ to, children, className }) => (
     <a href={to} className={className} data-testid="link">
@@ -22,7 +21,6 @@ jest.mock("react-router-dom", () => ({
   }),
 }));
 
-// ✅ Mock layout and utility components
 jest.mock("../components/layout/Layout", () => ({ children }) => (
   <div>{children}</div>
 ));
@@ -30,7 +28,6 @@ jest.mock("../components/ui/ScrollToTopButton", () => () => (
   <div>ScrollButton</div>
 ));
 
-// ✅ Mock CountryCard to simplify UI
 jest.mock("../components/countries/CountryCard", () => {
   return function MockCountryCard({ country }) {
     return (
@@ -45,7 +42,6 @@ jest.mock("../components/countries/CountryCard", () => {
   };
 });
 
-// ✅ Sample mock data
 const mockCountries = [
   {
     name: { common: "France" },
@@ -65,7 +61,6 @@ const mockCountries = [
   },
 ];
 
-// ✅ Test suite
 describe("HomePage Integration Test", () => {
   beforeEach(() => {
     jest
@@ -84,7 +79,7 @@ describe("HomePage Integration Test", () => {
             (l) => l.toLowerCase() === language.toLowerCase()
           )
         );
-        console.log("Filtered countries by language:", filteredCountries); // Debugging line
+        console.log("Filtered countries by language:", filteredCountries);
         return filteredCountries;
       });
   });
@@ -115,7 +110,6 @@ describe("HomePage Integration Test", () => {
       expect(screen.getByText("France")).toBeInTheDocument();
     });
 
-    // ✅ Click on "Europe" region button
     await act(async () => {
       const europeButton = screen.getByText("Europe");
       fireEvent.click(europeButton);
@@ -136,7 +130,6 @@ describe("HomePage Integration Test", () => {
       expect(screen.getByText("France")).toBeInTheDocument();
     });
 
-    // ✅ Search for "fran"
     await act(async () => {
       const searchInput = screen.getByPlaceholderText(/search for a country/i);
       fireEvent.change(searchInput, { target: { value: "fran" } });
@@ -148,18 +141,15 @@ describe("HomePage Integration Test", () => {
     });
   });
 
-  // Negative Test 1: No countries match the selected region
   test("displays no countries when an invalid region is selected", async () => {
-    // Mock an empty region response
     jest.spyOn(countryService, "getCountriesByRegion").mockResolvedValue([]); // No countries for the selected region
 
     await act(async () => {
       render(<HomePage />);
     });
 
-    // Select a region that has no countries
     await act(async () => {
-      const europeButton = screen.getByText("Africa"); // Assuming Africa has no countries in the mock
+      const europeButton = screen.getByText("Africa");
       fireEvent.click(europeButton);
     });
 
@@ -169,13 +159,11 @@ describe("HomePage Integration Test", () => {
     });
   });
 
-  // Negative Test 2: No countries match the search term
   test("displays no countries when no countries match the search term", async () => {
     await act(async () => {
       render(<HomePage />);
     });
 
-    // Enter a search term that doesn't match any country
     await act(async () => {
       const searchInput = screen.getByPlaceholderText(/search for a country/i);
       fireEvent.change(searchInput, {
@@ -184,7 +172,6 @@ describe("HomePage Integration Test", () => {
     });
 
     await waitFor(() => {
-      // Ensure no countries are displayed
       expect(screen.queryByText("France")).not.toBeInTheDocument();
       expect(screen.queryByText("Japan")).not.toBeInTheDocument();
     });
